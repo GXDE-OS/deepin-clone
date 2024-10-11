@@ -208,3 +208,4 @@ file(GLOB QM_FILES "app/translations/*.qm")
 install(FILES ${QM_FILES} DESTINATION share/${APP_NAME}/translations)
 
 install(FILES app/deepin-clone.desktop DESTINATION share/applications)
+install(FILES app/deepin-clone.desktop /usr/share/GXDE/gxde-system-assistant/tool-extensions)

@@ -28,7 +28,7 @@
 #include "iconlabel.h"
 #include "../corelib/helper.h"
 
-#include <DCommandLinkButton>
+#include <dcommandlinkbutton.h>
 
 #include <QVBoxLayout>
 #include <QFileDialog>

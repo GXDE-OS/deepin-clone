@@ -7,7 +7,6 @@ GenericName=Clone
 Icon=deepin-clone
 MimeType=application/x-deepinclone-dim;
 Name=Deepin Clone
-NoDisplay=true
 StartupNotify=true
 Terminal=false
 Type=Application

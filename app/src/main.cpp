@@ -113,8 +113,8 @@ int main(int argc, char *argv[])
         rollingFileAppender->setLogFilesLimit(5);
         rollingFileAppender->setDatePattern(RollingFileAppender::DailyRollover);
 
-        logger->registerAppender(rollingFileAppender);
-        logger->registerAppender(consoleAppender);
+        dlogger->registerAppender(rollingFileAppender);
+        dlogger->registerAppender(consoleAppender);
 
         if (qEnvironmentVariableIsSet("PKEXEC_UID")) {
             const quint32 pkexec_uid = qgetenv("PKEXEC_UID").toUInt();
@@ -192,8 +192,8 @@ int main(int argc, char *argv[])
     rollingFileAppender->setLogFilesLimit(5);
     rollingFileAppender->setDatePattern(RollingFileAppender::DailyRollover);
 
-    logger->registerCategoryAppender("deepin.ghost", consoleAppender);
-    logger->registerCategoryAppender("deepin.ghost", rollingFileAppender);
+    dlogger->registerCategoryAppender("deepin.ghost", consoleAppender);
+    dlogger->registerCategoryAppender("deepin.ghost", rollingFileAppender);
 #endif
 
     parser.parse();

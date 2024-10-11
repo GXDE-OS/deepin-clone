@@ -20,9 +20,10 @@
  */
 
 #include "utilitylistitem.h"
+#include "dtkwidget_global.h"
 
-#include <DHorizontalLine>
-
+//#include <DHorizontalLine>
+#include <QGridLayout>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QIcon>
@@ -107,7 +108,7 @@ UtilityListItem::UtilityListItem(QWidget *parent)
     m_layout->addWidget(m_label, 0, Qt::AlignVCenter);
 
     m_spaceSeparator = new QWidget(this);
-    m_bottomSeparator = new DHorizontalLine(this);
+    m_bottomSeparator = new QWidget(this);
 
     m_spaceSeparator->setFixedHeight(2);
 

@@ -1,6 +1,6 @@
-deepin-clone (1.0.0.2) unstable; urgency=medium
+deepin-clone (1.0.0.3) unstable; urgency=medium
 
   * Initial release
-  * Add GXDE S A entry
-
+  * Add GXDE Sysbro entry
+  * Add Pass Auth shell code
  -- Deepin Packages Builder <packages@deepin.com>  Tue, 22 Aug 2017 09:30:02 +0800

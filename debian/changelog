@@ -1,3 +1,9 @@
+deepin-clone (1.1.1) UNRELEASED; urgency=medium
+
+  * Init riscv64 support
+
+ -- gfdgd_xi <3025613752@qq.com>  Sun, 02 Nov 2025 12:05:31 +0800
+
 deepin-clone (1.1.0) unstable; urgency=medium
 
   * Initial release

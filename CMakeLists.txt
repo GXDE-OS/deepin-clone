@@ -6,7 +6,10 @@ set(HONEST_NAME deepin-clone-honest)
 set(APP_NAME deepin-clone)
 set(PLUGIN_NAME dfm-plugin-dim-file)
 
-set(CMAKE_CXX_STANDARD_REQUIRED 17)
+# corelib 用 #define private public 访问 QIODevicePrivate，C++20 下 <chrono> 会带入
+# <sstream> 等头文件而被这个宏改写，所以固定为 C++17（与 Debian 上 GCC 14 的默认一致）
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 

@@ -1,0 +1,44 @@
+# Maintainer: CharOfString <root@charofstring.cc>
+pkgname=deepin-clone-git
+pkgver=1.1.3
+pkgrel=1
+pkgdesc='Disk and partition backup, restore and clone tool for GXDE'
+arch=('x86_64' 'aarch64')
+url="https://github.com/GXDE-OS/deepin-clone"
+license=('GPL-3.0-or-later')
+# 与 debian/control 相同：partclone 与各文件系统工具；sfdisk/blkid/ionice、partprobe 与 sudo 由程序直接调用
+# As in debian/control: partclone and the file system tools; sfdisk, blkid,
+# ionice, partprobe and sudo are run directly by the program.
+depends=('dtkwidget2-git' 'dtkcore2-git' 'qt5-base' 'partclone' 'jfsutils' 'ntfs-3g' 'xfsprogs'
+         'util-linux' 'parted' 'sudo' 'bash' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'glibc')
+makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'qt5-tools' 'deepin-gettext-tools-git')
+# deepin-clone-pkexec 用 garma 或 zenity 询问 sudo 密码 ・ deepin-clone-pkexec asks for the sudo password with garma or zenity.
+optdepends=('garma-git: password prompt'
+            'zenity: password prompt'
+            'gxde-system-assistant-git: system assistant entry')
+provides=('deepin-clone')
+conflicts=('deepin-clone' 'gxde-clone-git')
+source=()
+sha512sums=()
+
+# 直接使用 PKGBUILD 所在的 git 仓库作为源码 ・ Build from the git checkout this PKGBUILD lives in.
+_srcroot() {
+  git -C "$startdir" rev-parse --show-toplevel
+}
+
+build() {
+  # 与 debian/rules 相同，不构建文件管理器插件 ・ Same as debian/rules, without the file manager plugin.
+  cmake -B build -S "$(_srcroot)" -GNinja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISABLE_DFM_PLUGIN=YES
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
+  # Arch 上 /usr/sbin 是指向 /usr/bin 的链接，程序中的 /usr/sbin 路径仍然有效
+  # On Arch /usr/sbin links to /usr/bin, so the /usr/sbin paths in the program still work.
+  mv "$pkgdir"/usr/sbin/* "$pkgdir/usr/bin/"
+  rmdir "$pkgdir/usr/sbin"
+}

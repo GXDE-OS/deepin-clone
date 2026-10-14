@@ -11,7 +11,8 @@ license=('GPL-3.0-or-later')
 # ionice, partprobe and sudo are run directly by the program.
 depends=('dtkwidget2-git' 'dtkcore2-git' 'qt5-base' 'partclone' 'jfsutils' 'ntfs-3g' 'xfsprogs'
          'util-linux' 'parted' 'sudo' 'bash' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'glibc')
-makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'qt5-tools' 'deepin-gettext-tools-git')
+# DTK2 的 CMake 配置文件在 dtkwidget2-dev-git 中 ・ DTK2's CMake config files are in dtkwidget2-dev-git.
+makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'qt5-tools' 'deepin-gettext-tools-git' 'dtkwidget2-dev-git')
 # deepin-clone-pkexec 用 garma 或 zenity 询问 sudo 密码 ・ deepin-clone-pkexec asks for the sudo password with garma or zenity.
 optdepends=('garma-git: password prompt'
             'zenity: password prompt'
